@@ -1,8 +1,10 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import com.moowork.gradle.node.yarn.YarnTask
 
 plugins {
 	id("org.springframework.boot") version "2.6.1"
 	id("io.spring.dependency-management") version "1.0.11.RELEASE"
+	id("com.github.node-gradle.node") version "2.2.0"
 	kotlin("jvm") version "1.6.0"
 	kotlin("plugin.spring") version "1.6.0"
 }
@@ -16,12 +18,12 @@ repositories {
 }
 
 dependencies {
-	implementation("org.springframework.boot:spring-boot-starter-data-redis")
-	implementation("org.springframework.boot:spring-boot-starter-web")
-	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+	implementation("org.springframework.boot:spring-boot-starter-data-redis:2.6.1")
+	implementation("org.springframework.boot:spring-boot-starter-web:2.5.6")
+	implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.0")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation("org.springframework.boot:spring-boot-starter-test:2.5.6")
 }
 
 tasks.withType<KotlinCompile> {
@@ -34,3 +36,36 @@ tasks.withType<KotlinCompile> {
 tasks.withType<Test> {
 	useJUnitPlatform()
 }
+
+node {
+	version = "16.13.1"
+	download = true
+}
+
+task("installDependencies", YarnTask::class) {
+	args = mutableListOf("install", "--network-timeout", "10000")
+	setExecOverrides(closureOf<ExecSpec> {
+		setWorkingDir("./src/ts")
+	})
+}
+
+//task("testWeb", YarnTask::class) {
+//	args = mutableListOf("test:ci")
+//	setExecOverrides(closureOf<ExecSpec> {
+//		setWorkingDir("./src/js")
+//	})
+//}
+
+task("buildWeb", YarnTask::class) {
+	args = mutableListOf("build")
+	setExecOverrides(closureOf<ExecSpec> {
+		setWorkingDir("./src/js")
+	})
+}
+
+//project.tasks["testWeb"].dependsOn("installDependencies")
+project.tasks["buildWeb"].dependsOn("installDependencies")
+
+//project.tasks["test"].dependsOn("testWeb")
+project.tasks["bootRun"].dependsOn("buildWeb")
+project.tasks["bootJar"].dependsOn("buildWeb")
