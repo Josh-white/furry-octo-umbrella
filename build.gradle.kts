@@ -59,7 +59,7 @@ task("installDependencies", YarnTask::class) {
 task("buildWeb", YarnTask::class) {
 	args = mutableListOf("build")
 	setExecOverrides(closureOf<ExecSpec> {
-		setWorkingDir("./src/js")
+		setWorkingDir("./src/ts")
 	})
 }
 
