@@ -5,10 +5,10 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-class StartGameController(startGameService: StartGameService) {
+class StartGameController(private val startGameService: StartGameService) {
 
     @PostMapping("/startNewGame")
     fun startGame(@RequestBody playerBoard: Board) {
-
+        startGameService.startGame(playerBoard)
     }
 }
