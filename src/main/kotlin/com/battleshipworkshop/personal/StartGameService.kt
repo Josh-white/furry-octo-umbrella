@@ -1,11 +1,11 @@
 package com.battleshipworkshop.personal
-
 import org.springframework.stereotype.Service
 
 @Service
-class StartGameService {
+class StartGameService (val redisRepository: RedisRepository) {
+
     fun startGame(playerBoard: Board): Board {
-        return playerBoard
+        return redisRepository.savePlayerBoard(playerBoard)
     }
 
 }
