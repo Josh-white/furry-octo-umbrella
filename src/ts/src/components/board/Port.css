@@ -1,0 +1,70 @@
+.port--container {
+    margin-top: 10px;
+    margin-left: 6vw;
+    display: flex;
+    width: 600px;
+    height: 300px;
+    gap: 10px;
+}
+
+.port {
+    display: flex;
+    width: 600px;
+    height: 300px;
+    gap: 10px;
+    flex-wrap: wrap;
+
+}
+
+.ship--container--horizontal {
+    display: flex;
+    flex-direction: row;
+    height: fit-content;
+    width: fit-content;
+}
+
+.ship--container--vertical {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    width: fit-content;
+}
+
+.ship--carrier {
+    background-color: red;
+    width: 60px;
+    height: 60px;
+    display: flex;
+}
+
+.ship--battleship {
+    background-color: orange;
+    width: 60px;
+    height: 60px;
+    display: grid
+}
+
+.ship--cruiser {
+    background-color: pink;
+    width: 60px;
+    height: 60px;
+    display: grid
+}
+
+.ship--submarine {
+    background-color: mediumpurple;
+    width: 60px;
+    height: 60px;
+    display: grid
+}
+
+.ship--destroyer {
+    background-color: chocolate;
+    width: 60px;
+    height: 60px;
+    display: grid
+}
+
+.hovered {
+    background-color: deeppink;
+}

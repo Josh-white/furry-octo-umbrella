@@ -1,0 +1,87 @@
+.game--container {
+    display: flex;
+}
+
+.playerBoard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 600px;
+    margin-left: 100px;
+}
+
+.enemyBoard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 600px;
+    margin-left: 100px;
+}
+
+.playerBoard--axis-container {
+    display: flex;
+}
+
+.playerBoard--axis-x {
+    flex-direction: column;
+}
+
+.playerBoard--axis-x h3 {
+    margin-bottom: 37px;
+}
+
+.playerBoard--axis-y {
+    display: flex;
+}
+
+.playerBoard--axis-y h3 {
+    margin: 0 24px
+}
+
+.playerBoard--container {
+    display: grid;
+    grid-gap: 1px;
+    grid-template-rows: repeat(10, calc(600px/ 10));
+    grid-template-columns: repeat(10, calc(600px/ 10));
+}
+
+.enemyBoard--container {
+    display: grid;
+    grid-gap: 1px;
+    grid-template-rows: repeat(10, calc(600px/ 10));
+    grid-template-columns: repeat(10, calc(600px/ 10));
+}
+
+.playerBoard--grid {
+    background-color: #61dafb;
+    width: 60px;
+    height: 60px;
+    display: grid
+}
+
+.enemyBoard--grid {
+    background-color: aquamarine;
+    width: 60px;
+    height: 60px;
+    display: grid
+}
+
+.carrier {
+    background-color: red;
+}
+
+.battleship {
+    background-color: orange;
+}
+
+.cruiser {
+    background-color: pink;
+}
+
+.submarine {
+    background-color: mediumpurple;
+}
+
+.destroyer {
+    background-color: chocolate;
+}

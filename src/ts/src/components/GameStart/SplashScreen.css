@@ -1,0 +1,15 @@
+.splashscreen {
+    background: #d4f1f9;
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    justify-content: center;
+}
+
+.logo {
+    margin: auto;
+}
+
+.button_container {
+    text-align: center;
+}
